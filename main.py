@@ -11,7 +11,7 @@ app = FastAPI()
 IMG_SIZE = 300
 
 # Load TFLite model once
-interpreter = tf.lite.Interpreter(model_path="model.tflite")
+interpreter = tf.lite.Interpreter(model_path="layer1_fp32.tflite")
 interpreter.allocate_tensors()
 
 input_details = interpreter.get_input_details()
