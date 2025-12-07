@@ -1,6 +1,6 @@
 from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import JSONResponse
-import tflite_runtime.interpreter as tflite
+import tensorflow as tf
 import numpy as np
 from PIL import Image
 import io
@@ -11,8 +11,7 @@ app = FastAPI()
 IMG_SIZE = 300
 
 # Load TFLite model once
-interpreter = tflite.Interpreter(model_path="model.tflite")
-
+interpreter = tf.lite.Interpreter(model_path="model.tflite")
 interpreter.allocate_tensors()
 
 input_details = interpreter.get_input_details()
